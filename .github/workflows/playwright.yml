@@ -25,3 +25,20 @@ jobs:
         name: playwright-report
         path: playwright-report/
         retention-days: 30
+
+  deploy:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Deploy to Production
+        run: |
+          echo "Deploying to production..."
+          # Add your deployment commands here
+          # For example, you might use SSH to deploy to a server or use a cloud provider's CLI tool
+          # ssh user@yourserver "cd /path/to/app && git pull && npm install && npm run start"
+          
